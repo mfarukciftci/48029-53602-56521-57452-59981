@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,6 +25,11 @@ public class Task {
     private String taskName;
     private String description;
     private LocalDateTime deadline;
+
+    @OneToMany(mappedBy = "task")
+    private List<Reminder> reminders = new ArrayList<>();
+
+
 
     @ManyToOne
     @JoinColumn(name = "categoryId", nullable = false)

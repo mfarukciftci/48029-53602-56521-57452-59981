@@ -1,12 +1,12 @@
 package Reminder.reminder.entites.concretes;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,4 +17,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long categoryId;
     private String categoryName;
+
+    @OneToMany(mappedBy = "category")
+    private List<Task> tasks = new ArrayList<>();
 }
